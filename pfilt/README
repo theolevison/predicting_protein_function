@@ -1,0 +1,35 @@
+This is the pfilt program, as described in the article:
+Jones, D.T. & Swindells, M.B. (2002) Getting the most from PSI-BLAST. TIBS. 27: 161-164.
+
+The pfilt program is designed to mask out (i.e. replace amino acid characters
+with Xs) regions of low complexity, coiled-coil regions and more regions with
+extremely biased amino acid compositions. For compositional biased regions,
+only the overrepresented amino acids are masked.
+
+The program can be compiled as follows:
+
+cc -O pfilt.c -lm -o pfilt
+
+Usage: pfilt [-f] [-t] [-c] [-b] [-x] [-w] fasta-file
+
+-t : turn off transmembrane masking
+-c : turn off coiled-coil masking
+-b : turn ON compositional masking
+-x : turn off low-complexity masking
+-f : exclude sequences with "fragment" in the description line
+-w : turn off WD repeat signatures masking
+
+Note that the default is NOT to mask regions with biased composition!
+
+The fasta-file can contain one or more sequences in standard FASTA format.
+
+
+Change History
+==============
+
+1.0 : First release
+1.1 : Added flag to turn off low-complexity filtering & changed defaults
+1.2 : Minor bug fix
+1.3 : Allow option to remove sequences described as being a "fragment"
+1.4 : Increased buffer size and now checks for buffer overflows
+1.5 : Added WD repeat signatures filtering & corresponding flag to turn it off
